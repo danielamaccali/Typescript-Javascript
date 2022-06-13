@@ -62,6 +62,7 @@ class Cofrinho
         this.moedas = new Map<Moeda, number>;
     }
 
+    adicionarMoeda(m: Moeda) : void //conforme exercício - pq desta forma?
     adicionarMoeda(m: Moeda, n: number): void
     {
         this.moedas.set(m, n);
@@ -87,10 +88,13 @@ class Cofrinho
 
     menorMoeda() : number
     {
-        let menorMoeda : number = Number.MIN_VALUE;
-        for(let menor of this.moedas.values())
+        let menorMoeda : number = Number.MAX_VALUE;
+        for(let menor of this.moedas.keys())
         {
-            menorMoeda = this.moedas;
+            if(menorMoeda < menor.valor)
+            {
+                menorMoeda = menor.valor;
+            }
 
         }
         return menorMoeda;
@@ -112,11 +116,16 @@ cofre.adicionarMoeda(real_010, 10);
 cofre.adicionarMoeda(real_025, 10);
 cofre.adicionarMoeda(dolar_010, 10); // como separar?
 
-console.log(cofre.calcularTotal());
+console.log(`Valor total do cofrinho: ${cofre.calcularTotal()}`);
 
 console.log(cofre.menorMoeda());
 
 //console.log(JSON.stringify(cofre));
+
+
+
+
+
 
 
 
