@@ -71,28 +71,46 @@ class ClienteJuridico extends Cliente
 }
 
 
-// implementação exercicio 3.a
+// implementação exercicio 3.b
 class CadastroClientes
 {
-    private clienteF: Map<ClienteFisico, number>; //seria uma coleção neste formato?
+    private _cliente: Cliente[];
 
     constructor()
     {
-        this.clienteF = new Map<ClienteFisico, number>;
+        this._cliente = [];
     }
 
-    adicionarCliente(cliente: ClienteFisico) : ClienteFisico //teste
+    adicionarCliente(cliente: Cliente)
     {
-        
+        this._cliente.push(cliente);
     }
+
+    listar()
+    {
+        return this._cliente;
+    }
+
+    
 }
 
 let cf1 = new ClienteFisico("Fulano de tal", 35, 2000)
 let cj1 = new ClienteJuridico("Empresa T1000", 200)
+let cf2 = new ClienteFisico("Claudiosvaldo Nogueira", 61, 6000)
 
-console.log(`\n Cliente: ${cf1.getNome()} \n Idade: ${cf1.getIdade()} \n Salário: ${cf1.getSalario()} \n Mensalidade: ${cf1.getMensalidade()}`);
+//console.log(`\n Cliente: ${cf1.getNome()} \n Idade: ${cf1.getIdade()} \n Salário: ${cf1.getSalario()} \n Mensalidade: ${cf1.getMensalidade()}`);
 
-console.log(`\n Cliente: ${cj1.getNome()} \n Mensalidade: ${cj1.getMensalidade()}`);
+//console.log(`\n Cliente: ${cj1.getNome()} \n Mensalidade: ${cj1.getMensalidade()}`);
+
+//console.log(`\n Cliente: ${cf2.getNome()} \n Idade: ${cf2.getIdade()} \n Salário: ${cf2.getSalario()} \n Mensalidade: ${cf2.getMensalidade()}`);
+
+let teste1 = new CadastroClientes();
+
+teste1.adicionarCliente(new ClienteFisico("Fulano de tal", 35, 2000));
+teste1.adicionarCliente(new ClienteJuridico("Empresa T1000", 200));
+teste1.adicionarCliente(new ClienteFisico("Claudiosvaldo Nogueira", 61, 6000));
+
+console.log(teste1.listar());
 
 
 // a) Implemente as respectivas classes. Para o cálculo do valor da mensalidade utilize as seguintes informações: 
